@@ -13,6 +13,8 @@ function errorMiddleware(
   res: Response
   // next: NextFunction !TODO
 ): void {
+  console.log("what is error", error);
+
   const status = error.status || 500;
   const message = error.message || 'something went wrong..';
 

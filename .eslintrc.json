@@ -11,6 +11,9 @@
     "plugin:eslint-comments/recommended",
     "plugin:jest/recommended",
     "plugin:promise/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -32,28 +35,11 @@
         "endOfLine": "auto"
       }
     ],
-    "import/prefer-default-export": "off",
-    "import/no-default-export": "error",
-    "no-use-before-define": [
-      "error",
-      {
-        "functions": false,
-        "classes": true,
-        "variables": true
-      }
-    ],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "error",
-      {
-        "functions": false,
-        "classes": true,
-        "variables": true,
-        "typedefs": true
-      }
-    ],
-    "import/no-extraneous-dependencies": "off",
-    "no-console": "off"
+    "import/extensions": "off",
+    "no-console": "off",
+    "lines-between-class-members": "off",
+    "@typescript-eslint/lines-between-class-members": ["off"],
+    "class-methods-use-this": ["error", { "enforceForClassFields": false }]
   },
   "settings": {
     "import/resolver": {

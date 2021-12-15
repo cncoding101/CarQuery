@@ -18,10 +18,7 @@ class App {
     this.intialiseMiddleware();
     this.initialiseControllers(controllers);
     this.initialiseErrorHandling();
-
-    // setup the database connection to mongodb
-    const { MONGO_PATH } = process.env;
-    mongoose.connect(MONGO_PATH || 'mongodb://localhost:27017');
+    this.initialiseDatabaseConnection();
   }
 
   /**
@@ -54,6 +51,13 @@ class App {
     this.express.listen(this.port, () => {
       console.log(`App listening on port ${this.port}`);
     });
+  }
+
+  private initialiseDatabaseConnection(): void {
+    // setup the database connection to mongodb
+    const { MONGO_PATH } = process.env;
+
+    mongoose.connect(`mongodb://${MONGO_PATH}`);
   }
 }
 
