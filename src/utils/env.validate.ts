@@ -5,12 +5,12 @@ import { cleanEnv, str, port } from 'envalid';
  */
 function validateEnv(): void {
   cleanEnv(process.env, {
-    NODE_ENV: str({
-      choices: ['development', 'production'],
-    }),
-    MONGO_PATH: str(), // enforces the variable to be there
+    MONGO_USER: str(),
+    MONGO_PASSWORD: str(),
+    MONGO_PORT: str(),
+    DATABASE: str(),
     PORT: port({ default: 3000 }),
-    JWT_SECRET: str()
+    JWT_SECRET: str(),
   });
 }
 

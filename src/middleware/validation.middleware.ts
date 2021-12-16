@@ -15,7 +15,7 @@ function validationMiddleware(validator: any): RequestHandler {
       // no await due to nature of ajv works well with single threaded
       const isValid = validator(req.body);
       if (!isValid) {
-        const errors = validator.errors; // required to copy the errors
+        const { errors } = validator; // required to copy the errors
         res.status(400).json(errors);
       }
       next();

@@ -1,13 +1,33 @@
 version: '3'
+
+volumes:
+  mongo-data:
+    driver: local
+
 services:
-  mongo:
-    container_name: mongo
-    image: mongo:latest
+  cars-query:
+    container_name: cars-query
+    depends_on:
+      - mongodb
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - $PORT:$PORT
+    external_links:
+      - mongodb
+    environment:
+      - NODE_ENV=development
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:5.0.2
     environment:
       - AUTH=yes
       - MONGO_INITDB_ROOT_USERNAME=cncoding101
       - MONGO_INITDB_ROOT_PASSWORD=1234abcd
-    volumes:
-      - ${MONGO_HOST_DATA}/db:/data/db
     ports:
       - '27017:27017'
+    volumes:
+      - ./db:/data/db

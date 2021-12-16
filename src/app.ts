@@ -41,6 +41,11 @@ class App {
     controllers.forEach((controller: Controller) => {
       this.express.use('/api', controller.router);
     });
+
+    // quickfix for every other route
+    this.express.use('/*', (req, res) => {
+      res.send('Not found.');
+    });
   }
 
   private initialiseErrorHandling(): void {
@@ -55,9 +60,14 @@ class App {
 
   private initialiseDatabaseConnection(): void {
     // setup the database connection to mongodb
-    const { MONGO_PATH } = process.env;
+    const { MONGO_USER, MONGO_PASSWORD, MONGO_PORT, DATABASE, NODE_ENV } =
+      process.env;
 
-    mongoose.connect(`mongodb://${MONGO_PATH}`);
+    mongoose.connect(
+      `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${
+        NODE_ENV === 'development' ? 'mongodb' : 'localhost'
+      }:${MONGO_PORT}/${DATABASE}?authSource=admin`
+    );
   }
 }
 

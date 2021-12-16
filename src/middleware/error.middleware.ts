@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import HttpException from '@/utils/exceptions/http.exeption';
 
 /**
@@ -11,10 +11,7 @@ function errorMiddleware(
   error: HttpException,
   req: Request,
   res: Response
-  // next: NextFunction !TODO
 ): void {
-  console.log("what is error", error);
-
   const status = error.status || 500;
   const message = error.message || 'something went wrong..';
 

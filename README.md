@@ -4,38 +4,45 @@ Simple REST Api for cars.
 
 ## Description
 
-...
+This is a REST api developed for car queries. You can interact with the api by using a third party application such as postman. In the repo you can find a collection attached. The application has a simple CRUD operations to handle and manipulate a car. The resources are protected by a simple JWT api key. The application is also dockerized. You can find the docker compose file in the repo. Using the docker-compose it can all be containerized. The solution is using eslint to enforce a code style and prettier for formatting. Husky is added in so that commits are clean as well as proper. To handle the database, I suggest to use mongocompass.
 
 ## Getting Started
 
+Start by creating a user using any third party application to make http requests to the server. Once a user has been created a token will be sent back in the response body. You can use this token to access the resources of a car.
+
 ### Dependencies
+
+For containerized solution
+
+- Docker
+
+For developing
+
+- Node
+- VS code
+- Eslint
+- Prettier
 
 ### Installing
 
-- Install all dependencies
-    * yarn/npm install
+This part is only if you decide to not use the docker-compose file.
+
+- yarn install
 
 ### Executing program
 
-- How to run the program
-- Step-by-step bullets
+Containerized solution
 
-```
-code blocks for commands
-```
+- docker-compose up -d in any docker supported terminal
+
+In none containerized solution
+
+- open the solution folder
+- yarn run dev
 
 ### Test
 
-- Run yarn test for the tests
-- Run yarn test:watch to attach a watch to the tests
-
-## Help
-
-Any advise for common problems or issues.
-
-```
-command to run if program contains helper info
-```
+No test currently..
 
 ## Authors
 
@@ -50,5 +57,4 @@ Github: https://github.com/cncoding101
 
 ## License
 
-Open source license
-
+MIT
