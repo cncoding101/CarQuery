@@ -34,11 +34,14 @@ This part is only if you decide to not use the docker-compose file.
 Containerized solution
 
 - docker-compose up -d in any docker supported terminal
+- docker-compose down (when you want to end the application)
 
 In none containerized solution
 
 - open the solution folder
+- containerize mongodb by running docker-compose up -d mongodb
 - yarn run dev
+- CTRL + C to end the application
 
 ### Test
 
